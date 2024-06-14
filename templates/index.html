@@ -5,6 +5,24 @@
     {% block content %}
 
         <h1 class="">TESTE</h1>
-        <a href="{% url 'historia' %}"> clique no link</a>
+
+        {% if cards %}
+        {% for noticia in cards %}
+
+            <li class="card">
+                <a href="{% url 'noticia' noticia.id %}"><span class="card__tag"> Leia Mais</span></a>
+                <div class="card__info">
+                    <p class="card__titulo">{{noticia.titulo}}</p>
+                    <div class="card__texto">
+                        <p class="card__descricao">{{noticia.subtitulo}}</p>
+                        <span>
+                            <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                        </span>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        {% else %}
+        {% endif %}
 
     {% endblock %}

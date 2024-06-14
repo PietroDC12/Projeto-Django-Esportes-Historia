@@ -1,7 +1,7 @@
 from django.urls import path
-from estrutura.views import index, historia
+from estrutura.views import index, noticia
 
 urlpatterns = [
     path('', index, name='index'),
-    path('historia/', historia, name='historia')
+    path('noticia/<int:noticia_id>', noticia, name='noticia')
 ]
