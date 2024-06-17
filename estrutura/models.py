@@ -9,10 +9,17 @@ class Escritor(models.Model):
         return self.nome
 
 class Noticia(models.Model):
+
+    TAG_MATERIA =[
+        ("FUTEBOL", "Futebol"),
+        ("OUTRO ESPORTE", "Outro esporte"),
+    ]
+
     escritor = models.ForeignKey(Escritor, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100, null=False, blank=False)
     subtitulo = models.CharField(max_length=100, null=False, blank=False)
-    corpo_texto = models.CharField(max_length=10000, null=False, blank=False)
+    materia = models.CharField(max_length=100, choices=TAG_MATERIA, default='')
+    corpo_texto = models.TextField(max_length=10000, null=False, blank=False)
     date_noticia = models.DateTimeField(default=datetime.now, blank=True)
 
 
