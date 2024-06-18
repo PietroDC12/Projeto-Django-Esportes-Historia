@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from estrutura.models import Noticia
 
 def index(request):
-    noticias = Noticia.objects.all()
+    noticias = Noticia.objects.order_by("date_noticia").filter(publicada=True)
     return render(request, 'index.html', {"cards": noticias})
 
 def noticia(request, noticia_id):

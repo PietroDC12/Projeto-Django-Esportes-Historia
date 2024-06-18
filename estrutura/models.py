@@ -21,6 +21,9 @@ class Noticia(models.Model):
     materia = models.CharField(max_length=100, choices=TAG_MATERIA, default='')
     corpo_texto = models.TextField(max_length=10000, null=False, blank=False)
     date_noticia = models.DateTimeField(default=datetime.now, blank=True)
+    imagem_noticia = models.ImageField(upload_to='./setup/static/assets/imagens/banco_imagens/', blank=True)
+    imagem_fonte = models.CharField(max_length=100, null=False, blank=True)
+    publicada = models.BooleanField(default=False)
 
 
     def __str__(self):
