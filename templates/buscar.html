@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="conteudo">
+    <section class="banner">
+        <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
+        <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
+    </section>
+    <section class="tags">
+        <p class="tags__titulo">Busque por tags:</p>
+        <ul class="tags__lista">
+            <li class="tags__tag">Nebulosa</li>
+            <li class="tags__tag">Estrela</li>
+            <li class="tags__tag">Galáxia</li>
+            <li class="tags__tag">Planeta</li>
+        </ul>
+    </section>
+
+    <h1 class="">TESTE</h1>
+
+    {% if cards %}
+    {% for noticia in cards %}
+
+        <li class="card">
+            <a href="{% url 'noticia' noticia.id %}"><span class="card__tag"> Leia Mais</span></a>
+            <div class="card__info">
+                <p class="card__titulo">{{noticia.titulo}}</p>
+                <div class="card__texto">
+                    <p class="card__descricao">{{noticia.subtitulo}}</p>
+                    <span>
+                        <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                    </span>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    {% else %}
+    <div class="imagem__texto">
+        <p> Nnehuma notícia encontrada</p>
+    </div>
+    {% endif %}
+
+{% endblock %}
