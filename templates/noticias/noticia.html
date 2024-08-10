@@ -1,0 +1,42 @@
+    {% extends 'base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+
+        <!--<h1 class="">TESTE de historia</h1>
+        <p> <a href="{% url 'index' %}">voltar pra home</a></p>-->
+
+
+        <section class="conteudo">
+            <p class="imagem-informacao-noticia">{{noticia.date_noticia}} - {{noticia.escritor}}</p>
+                <section class="imagem">
+                    <div class="imagem__conteudo">
+                        
+                        <div class="imagem__info">
+                            <div class="imagem__texto">
+                                <p class="titulo-noticia">{{noticia.titulo}}</p>
+                                <p class="subtitulo-noticia">{{noticia.subtitulo}}</p>
+                                <p class="texto_noticia">{{noticia.corpo_texto}}</p>
+                                
+                                {% if noticia.imagem_noticia == '' %}
+                                    <img src="{% static '/assets/imagens/galeria/sem_imagem.jpg'%}" width="350" height="260">
+                                {% else %}
+                                    <img src="{{ noticia.imagem_noticia.url }}" class="imagem-noticia">
+                                {% endif %}
+                                <p class="imagem-informacao-noticia">{{noticia.imagem_fonte}}</p>
+                                
+                                <p class="texto_noticia">{{noticia.corpo_texto}}</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <a href="{% url 'editar_noticia' noticia.id %}"><button class="btn btn-warning">Editar</button></a> 
+                                    <a href="{% url 'excluir_noticia' noticia.id %}"><button class="btn btn-danger">Excluir</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+    {% endblock %}

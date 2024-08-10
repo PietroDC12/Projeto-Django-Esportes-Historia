@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Escritor, Noticia
+from apps.estrutura.models import Escritor, Noticia
 
 class Escritores(admin.ModelAdmin):
     list_display = ('id',)
